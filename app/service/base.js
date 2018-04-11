@@ -10,6 +10,8 @@ class BaseService extends Service {
   async Gateway({
     url, apiVer, params, iotToken,
   }) {
+    console.log('Gateway Info = ', url, params);
+
     const { config } = this;
     // 用appKey和appSecret初始化客户端
     const client = new Client(config.aliyun.iot.AppKey, config.aliyun.iot.AppSecret);

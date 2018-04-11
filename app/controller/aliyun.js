@@ -16,6 +16,8 @@ class AliyunController extends Controller {
 
   /**
    * page=2&pageSize=10
+   * //status传字符串DEVELOPMENT_STATUS或者RELEASE_STATUS
+   * //nodeType传字符串DEVICE或者GATEWAY
    */
   async productInfoList() {
     const { ctx, service } = this;
@@ -26,8 +28,8 @@ class AliyunController extends Controller {
     const result = await service.aliyun.productInfoListGet({
       pageNo: page || 1,
       pageSize: pageSize || 10,
-      status: status || 0,
-      nodeType: nodeType || 0,
+      status: status || 'DEVELOPMENT_STATUS',
+      nodeType: nodeType || 'DEVICE',
     });
     ctx.body = result;
   }

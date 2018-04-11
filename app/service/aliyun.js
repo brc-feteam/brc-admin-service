@@ -32,6 +32,8 @@ class AliyunService extends BaseService {
    * helpers https://linkdevelop.aliyun.com/docCenter#/apiDetail/817/1928
    * @param {*} options parameters
    * @return {Object} return value
+   * status传字符串DEVELOPMENT_STATUS或者RELEASE_STATUS
+   * nodeType传字符串DEVICE或者GATEWAY
    */
   async productInfoListGet(options = {}) {
     const params = {
@@ -40,11 +42,10 @@ class AliyunService extends BaseService {
       params: {
         pageNo: options.pageNo || 1,
         pageSize: options.pageSize || 10,
-        status: options.status || 0,
-        nodeType: options.nodeType || 0,
+        status: options.status || 'DEVELOPMENT_STATUS',
+        nodeType: options.nodeType || 'DEVICE',
       },
     };
-
     return this.Gateway(params);
   }
 
