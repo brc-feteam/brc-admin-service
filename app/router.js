@@ -10,4 +10,5 @@ module.exports = app => {
   router.get('/aliyun/accountatt', controller.aliyun.accountAtt);
   router.get('/aliyun/productInfoList', controller.aliyun.productInfoList);
   router.get('/aliyun/thing/product/properties/get', controller.aliyun.queryPropertyByProductKey);
+  router.get('/aliyun/setThingProperties', controller.aliyun.setThingProperties);
 };

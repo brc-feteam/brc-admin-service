@@ -4,7 +4,7 @@
 /* eslint no-unused-vars:["warn"] */
 const BaseService = require('./base');
 
-const ALIYUN_IOT_APIURLPREFIX = 'http://api.link.aliyun.com';
+const ALIYUN_IOT_APIURLPREFIX = 'https://api.link.aliyun.com';
 
 class AliyunService extends BaseService {
 
@@ -55,6 +55,20 @@ class AliyunService extends BaseService {
       apiVer: '1.0.0',
       params: {
         productKey,
+      },
+    };
+    return this.Gateway(params);
+  }
+
+  async setThingProperties(opts) {
+    const { productKey, deviceName, properties = { LightSwitch: 1 } } = opts;
+    const params = {
+      url: `${ALIYUN_IOT_APIURLPREFIX}/thing/device/properties/set`,
+      apiVer: '1.1.0',
+      params: {
+        productKey,
+        deviceName,
+        properties,
       },
     };
     return this.Gateway(params);

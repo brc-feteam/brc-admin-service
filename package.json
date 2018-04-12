@@ -4,6 +4,7 @@
   "description": "service for BRC admin",
   "private": true,
   "dependencies": {
+    "@bone/bone-device-sdk": "^0.2.0",
     "aliyun-api-gateway": "^1.1.4",
     "egg": "^2.2.1",
     "egg-scripts": "^2.5.0",
