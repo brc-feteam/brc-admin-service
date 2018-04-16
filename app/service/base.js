@@ -13,8 +13,9 @@ class BaseService extends Service {
   }) {
     const { config } = this;
 
-    debug('Gateway Info = %s,%s', url, params);
+    console.warn('Gateway Info = %s, %o', url, params);
     debug(`AppKey=${config.aliyun.iot.AppKey}, AppSecret=${config.aliyun.iot.AppSecret}`);
+
     const { prod } = params;
     // 用appKey和appSecret初始化客户端
 

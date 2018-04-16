@@ -28,8 +28,8 @@ class AliyunController extends Controller {
     const result = await service.aliyun.productInfoListGet({
       pageNo: page || 1,
       pageSize: pageSize || 10,
-      status: status || 'DEVELOPMENT_STATUS',
-      nodeType: nodeType || 'DEVICE',
+      status,
+      nodeType,
     });
     ctx.body = result;
   }
