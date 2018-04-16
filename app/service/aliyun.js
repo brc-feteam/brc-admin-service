@@ -41,6 +41,7 @@ class AliyunService extends BaseService {
       url: `${ALIYUN_IOT_APIURLPREFIX}/thing/product/list/get`,
       apiVer: '1.0.0',
       params: {
+        prod: true, // fix: aliyun need prod key to access this API
         pageNo: options.pageNo || 1,
         pageSize: options.pageSize || 10,
         status: options.status || 'DEVELOPMENT_STATUS',

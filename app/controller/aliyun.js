@@ -19,7 +19,7 @@ class AliyunController extends Controller {
    * //status传字符串DEVELOPMENT_STATUS或者RELEASE_STATUS
    * //nodeType传字符串DEVICE或者GATEWAY
    */
-  async productInfoList() {
+  async productInfoListGet() {
     const { ctx, service } = this;
     const {
       page, pageSize, status, nodeType,

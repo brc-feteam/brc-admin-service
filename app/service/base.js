@@ -15,9 +15,22 @@ class BaseService extends Service {
 
     debug('Gateway Info = %s,%s', url, params);
     debug(`AppKey=${config.aliyun.iot.AppKey}, AppSecret=${config.aliyun.iot.AppSecret}`);
-
+    const { prod } = params;
     // 用appKey和appSecret初始化客户端
-    const client = new Client(config.aliyun.iot.AppKey, config.aliyun.iot.AppSecret);
+
+    let token = {
+      AppKey: config.aliyun.iot.AppKey,
+      AppSecret: config.aliyun.iot.AppSecret,
+    };
+    if (prod) {
+      token = {
+        AppKey: config.aliyun.prod.iot.AppKey,
+        AppSecret: config.aliyun.prod.iot.AppSecret,
+      };
+    }
+    console.log(token);
+
+    const client = new Client(token.AppKey, token.AppSecret);
     const result = await client.post(url, {
       data: {
         id: UUID.v1(), // 请求唯一标识，必填

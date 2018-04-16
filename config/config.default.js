@@ -44,6 +44,20 @@ module.exports = appInfo => {
       AppKey: '24841829',
       AppSecret: '8f67772f7f4a18f7828dd61a2dab9e7e',
     },
+    prod: {
+      iot: {
+        AppId: 'a120Z3dlEzIW8YwC',
+        AppKey: '24841652',
+        AppSecret: '66f7bb18cc60c2d31b441f57dd9f6067',
+      },
+    },
+  };
+
+  config.security = {
+    xframe: {
+      enable: false,
+    },
+    domainWhiteList: [ '*', 'http://localhost:8000' ],
   };
 
   return config;

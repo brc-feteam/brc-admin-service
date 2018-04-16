@@ -10,7 +10,7 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.get('/aliyun', controller.aliyun.index);
   router.get('/aliyun/iotxAccountListAttr', controller.aliyun.iotxAccountListAttr);
-  router.get('/aliyun/productInfoList', controller.aliyun.productInfoList);
+  router.get('/aliyun/productInfoListGet', controller.aliyun.productInfoListGet);
   router.get('/aliyun/thing/product/properties/get', controller.aliyun.queryPropertyByProductKey);
   router.get('/aliyun/setThingProperties', controller.aliyun.setThingProperties);
 };

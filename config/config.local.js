@@ -9,3 +9,10 @@ exports.robot = {
   ],
 };
 
+exports.security = {
+  xframe: {
+    enable: false,
+  },
+  domainWhiteList: [ 'http://localhost:8000' ],
+};
+
