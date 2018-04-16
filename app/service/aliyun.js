@@ -12,8 +12,9 @@ class AliyunService extends BaseService {
    * account attributes
    * @param {*} options parameters
    * @return {Object} return value
+   * https://linkdevelop.aliyun.com/docCenter#/apiDetail/5/1549
    */
-  async accountAtt(options = {}) {
+  async iotxAccountListAttr(options = {}) {
     const params = {
       url: `${ALIYUN_IOT_APIURLPREFIX}/iotx/account/listAttr`,
       apiVer: '1.0.4',

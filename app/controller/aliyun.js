@@ -8,9 +8,9 @@ class AliyunController extends Controller {
     this.ctx.body = 'hi, aliyun';
   }
 
-  async accountAtt() {
+  async iotxAccountListAttr() {
     const { ctx, service } = this;
-    const result = await service.aliyun.accountAtt();
+    const result = await service.aliyun.iotxAccountListAttr();
     ctx.body = result;
   }
 

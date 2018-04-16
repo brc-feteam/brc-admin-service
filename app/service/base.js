@@ -4,15 +4,18 @@
 const Service = require('egg').Service;
 const Client = require('aliyun-api-gateway').Client;
 const UUID = require('uuid');
+const debug = require('debug')('brc-service[BaseService]');
 
 class BaseService extends Service {
 
   async Gateway({
     url, apiVer, params, iotToken,
   }) {
-    console.log('Gateway Info = ', url, params);
-
     const { config } = this;
+
+    debug('Gateway Info = %s,%s', url, params);
+    debug(`AppKey=${config.aliyun.iot.AppKey}, AppSecret=${config.aliyun.iot.AppSecret}`);
+
     // 用appKey和appSecret初始化客户端
     const client = new Client(config.aliyun.iot.AppKey, config.aliyun.iot.AppSecret);
     const result = await client.post(url, {
