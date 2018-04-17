@@ -45,8 +45,41 @@ class AliyunController extends Controller {
   }
 
   /**
+   * 物的管理服务 - 获取物的详情列表
+   */
+  async thingDetailListGet() {
+    const { ctx, service } = this;
+    const {
+      productKey,
+    } = ctx.request.query;
+    const result = await service.aliyun.thingDetailListGet(productKey);
+    ctx.body = result;
+  }
+
+  /**
+   * 物的管理服务 - 获取物的指定属性快照数据
+   * http://127.0.0.1:7001/aliyun/getThingProperty?productKey=a19kxqwXWu7&deviceName=s7zMqOjD2yA1GcqckXXv&propertyIdentifier=LightSwitch
+   */
+  async getThingProperty() {
+    const { ctx, service } = this;
+
+    const {
+      productKey, deviceName, propertyIdentifier,
+    } = ctx.request.query;
+
+    const params = {
+      productKey, deviceName, propertyIdentifier,
+    };
+
+    const result = await service.aliyun.getThingProperty(params);
+
+    ctx.body = result;
+  }
+
+  /**
    * 物的管理服务
    * 设置物的属性
+   * http://127.0.0.1:7002/aliyun/setThingProperties?productKey=a19kxqwXWu7&deviceName=s7zMqOjD2yA1GcqckXXv&LightSwitch=1
    */
   async setThingProperties() {
     const { ctx, service } = this;
@@ -55,8 +88,6 @@ class AliyunController extends Controller {
       deviceName,
       LightSwitch,
     } = ctx.request.query;
-
-    // http://127.0.0.1:7002/aliyun/setThingProperties?productKey=a19kxqwXWu7&deviceName=s7zMqOjD2yA1GcqckXXv&LightSwitch=1
 
     const params = { productKey, deviceName, properties: { LightSwitch: Number(LightSwitch) } };
     const result = await service.aliyun.setThingProperties(params);

@@ -76,6 +76,48 @@ class AliyunService extends BaseService {
     return this.Gateway(params);
   }
 
+  /**
+   * 物的管理服务获取物的详情列表
+   * @param {*} opts dd
+   * @return {Object} dd
+   * https://linkdevelop.aliyun.com/docCenter#/apiDetail/4/2248
+   */
+  async thingDetailListGet(opts) {
+
+    const params = {
+      url: `${ALIYUN_IOT_APIURLPREFIX}/thing/device/detail/list/get`,
+      apiVer: '1.1.0',
+      params: {
+        productKey: 'a19kxqwXWu7',
+        onlineStatus: null, // [null, 0, 1]
+        activeStatus: null, // [null, 0, 1]
+        currentPage: 1,
+        pageSize: 10,
+      },
+    };
+
+    return this.Gateway(params);
+  }
+
+  // https://linkdevelop.aliyun.com/docCenter#/apiDetail/4/2238
+  async getThingProperty(opts) {
+    const {
+      productKey,
+      deviceName,
+      propertyIdentifier,
+    } = opts;
+
+    const params = {
+      url: `${ALIYUN_IOT_APIURLPREFIX}/thing/device/property/query`,
+      apiVer: '1.1.0',
+      params: {
+        productKey, deviceName, propertyIdentifier,
+      },
+    };
+
+    return this.Gateway(params);
+  }
+
 
 }
 

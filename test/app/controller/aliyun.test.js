@@ -12,14 +12,34 @@ describe('test/app/controller/aliyun.test.js', () => {
     // yield ctx.service.xx();
   });
 
-  // //http://localhost:7001/aliyun/thing/product/properties/get?productKey=a1iYhDH6Efi
-  it('should GET /aliyun/thing/product/properties/get', () => {
+  // //http://localhost:7001/aliyun/queryPropertyByProductKey?productKey=a1iYhDH6Efi
+  it('should GET /aliyun/queryPropertyByProductKey', () => {
     return app.httpRequest()
-      .get('/aliyun/thing/product/properties/get?productKey=a1iYhDH6Efi')
+      .get('/aliyun/queryPropertyByProductKey?productKey=a1iYhDH6Efi')
       .expect(data => {
         return data.code === 200;
       })
       .expect(200);
   });
+
+  it('should GET /aliyun/getThingProperty', () => {
+
+    const params = {
+      productKey: 'a19kxqwXWu7',
+      deviceName: 's7zMqOjD2yA1GcqckXXv',
+      propertyIdentifier: 'LightSwitch',
+    };
+    // queryString.parse(params)
+
+    return app.httpRequest()
+      .get('/aliyun/getThingProperty')
+      .expect(data => {
+        // console.log(data);
+        return data.code === 200;
+      })
+      .expect(200);
+  });
+
+
 });
 
