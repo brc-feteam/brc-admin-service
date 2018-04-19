@@ -31,3 +31,14 @@ $ npm stop
 
 
 [egg]: https://eggjs.org
+
+
+### 模拟设备 （演示之前，运行下面命令）
+
+https://linkdevelop.aliyun.com/developGuide#gp1vrd.html
+
+Node.js 设备 SDK
+
+bnpm install
+
+node ./testdevice/device.js
