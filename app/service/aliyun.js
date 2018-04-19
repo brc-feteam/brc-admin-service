@@ -119,6 +119,22 @@ class AliyunService extends BaseService {
   }
 
 
+  // https://linkdevelop.aliyun.com/docCenter#/apiDetail/820/1989
+  async queryDeviceByProductKey(opts) {
+    const params = {
+      url: `${ALIYUN_IOT_APIURLPREFIX}/thing/device/list`,
+      apiVer: '1.0.0',
+      params: {
+        productKey: opts.productKey,
+        offset: opts.offset,
+        pageSize: opts.pageSize,
+      },
+    };
+
+    return this.Gateway(params);
+  }
+
+
 }
 
 module.exports = AliyunService;

@@ -14,4 +14,5 @@ module.exports = app => {
   router.get('/aliyun/queryPropertyByProductKey', controller.aliyun.queryPropertyByProductKey);
   router.get('/aliyun/setThingProperties', controller.aliyun.setThingProperties);
   router.get('/aliyun/getThingProperty', controller.aliyun.getThingProperty);
+  router.get('/aliyun/queryDeviceByProductKey', controller.aliyun.queryDeviceByProductKey);
 };

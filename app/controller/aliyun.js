@@ -34,13 +34,32 @@ class AliyunController extends Controller {
     ctx.body = result;
   }
 
-  // /thing/product/properties/get
+  // 产品管理服务 - 查询产品属性
+  // http://127.0.0.1:7001/aliyun/queryPropertyByProductKey?productKey=a19kxqwXWu7
   async queryPropertyByProductKey() {
     const { ctx, service } = this;
     const {
       productKey,
     } = ctx.request.query;
     const result = await service.aliyun.queryPropertyByProductKey(productKey);
+    ctx.body = result;
+  }
+
+  // 设备查询服务 - 查询设备列表
+  // http://127.0.0.1:7001/aliyun/queryDeviceByProductKey?productKey=a19kxqwXWu7&offset=1&pageSize=10
+  async queryDeviceByProductKey() {
+    const { ctx, service } = this;
+    const {
+      productKey,
+      offset,
+      pageSize,
+    } = ctx.request.query;
+
+    const result = await service.aliyun.queryDeviceByProductKey({
+      productKey,
+      offset: offset || 1,
+      pageSize: pageSize || 10,
+    });
     ctx.body = result;
   }
 
