@@ -2,6 +2,7 @@
 
 /* eslint prefer-destructuring: ["error", {AssignmentExpression: {array: true}}] */
 const Controller = require('egg').Controller;
+const { isNumber } = require('../utils/utils')
 
 class AliyunController extends Controller {
   async index() {
@@ -51,29 +52,29 @@ class AliyunController extends Controller {
     const { ctx, service } = this;
     const {
       productKey,
-      offset,
+      page,
       pageSize,
     } = ctx.request.query;
 
     const result = await service.aliyun.queryDeviceByProductKey({
       productKey,
-      offset: offset || 1,
+      page: page || 1,
       pageSize: pageSize || 10,
     });
     ctx.body = result;
   }
 
-  /**
-   * 物的管理服务 - 获取物的详情列表
-   */
-  async thingDetailListGet() {
-    const { ctx, service } = this;
-    const {
-      productKey,
-    } = ctx.request.query;
-    const result = await service.aliyun.thingDetailListGet(productKey);
-    ctx.body = result;
-  }
+  // /**
+  //  * 物的管理服务 - 获取物的详情列表
+  //  */
+  // async thingDetailListGet() {
+  //   const { ctx, service } = this;
+  //   const {
+  //     productKey,
+  //   } = ctx.request.query;
+  //   const result = await service.aliyun.thingDetailListGet(productKey);
+  //   ctx.body = result;
+  // }
 
   /**
    * 物的管理服务 - 获取物的指定属性快照数据
@@ -102,13 +103,21 @@ class AliyunController extends Controller {
    */
   async setThingProperties() {
     const { ctx, service } = this;
-    const {
+    let {
       productKey,
       deviceName,
-      LightSwitch,
+      ...properties
     } = ctx.request.query;
 
-    const params = { productKey, deviceName, properties: { LightSwitch: Number(LightSwitch) } };
+    for (var i in properties) {
+      if(isNumber(properties[i]))
+        properties[i] = parseInt(properties[i])
+    }
+
+    // properties.map(o=> isNumber(o)? o: parseInt(o));
+    console.warn(properties)
+
+    const params = { productKey, deviceName, properties };
     const result = await service.aliyun.setThingProperties(params);
     ctx.body = result;
   }
