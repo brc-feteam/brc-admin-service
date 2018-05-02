@@ -8,6 +8,8 @@ debug('node env vars: %s, %s', process.env.NODE_ENV, process.env.DEBUG);
 module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
+  router.get('/aliyunld/apigw.iot', controller.apigw.get);
+  router.post('/aliyunld/apigw.iot', controller.apigw.post);
   router.get('/aliyun', controller.aliyun.index);
   router.get('/aliyun/iotxAccountListAttr', controller.aliyun.iotxAccountListAttr);
   router.get('/aliyun/productInfoListGet', controller.aliyun.productInfoListGet);

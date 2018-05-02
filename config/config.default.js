@@ -54,10 +54,22 @@ module.exports = appInfo => {
   };
 
   config.security = {
+    csrf: {
+      enable: false,
+      domainWhiteList: [ '*', 'http://localhost:8000', 'http://192.168.24.141:8000' ],
+    },
+    csp: {
+      enable: false,
+    },
     xframe: {
       enable: false,
     },
-    domainWhiteList: [ '*', 'http://localhost:8000' ],
+    domainWhiteList: [ '*', 'http://localhost:8000', 'http://192.168.24.141:8000' ],
+  };
+
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,POST,PUT,DELETE,OPTIONS',
   };
 
   return config;
