@@ -8,7 +8,7 @@
     <ul class="news-view view">
       {% for item in list %}
         <li class="item">
-          <a href="{{ item.id }}">{{ helper.addPrefix(item.name) }}</a>
+          <a href="{{ item.id }}">{{ helper.addPrefix(item.title) }}</a>
         </li>
       {% endfor %}
     </ul>
